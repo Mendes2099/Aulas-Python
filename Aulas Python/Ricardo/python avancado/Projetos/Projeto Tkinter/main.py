@@ -17,10 +17,10 @@ def main():
     None.
     """
     autores()
-    
 
     interface = Interface()
     interface.interface_user()
+    interface.gerar()
 
 
 if __name__ == "__main__":

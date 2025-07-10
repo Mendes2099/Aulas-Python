@@ -1,5 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
+import random
+import string
 
 
 class Interface:
@@ -8,14 +11,14 @@ class Interface:
         self.__janela = tk.Tk()
         self.__janela.title("Gerador de passwords")
         self.__janela.geometry("300x200")
-        # icon = tk.PhotoImage(file='Aulas Python\\Ricardo\\python avancado\\Projetos\\Projeto Tkinter\\icon.png')
+        # icon = tk.PhotoImage(file='Aulas Python\Ricardo\\python avancado\\Projetos\\Projeto Tkinter\\icon.png')
         # self.__janela.iconphoto(False, icon)
 
         self.maiusculas = tk.BooleanVar(value=False)
         self.minusculas = tk.BooleanVar(value=False)
         self.numeros = tk.BooleanVar(value=False)
         self.simbolos = tk.BooleanVar(value=False)
-
+        self.__tamanho = 0
         self.interface_user()
 
     def interface_user(self):
@@ -26,8 +29,9 @@ class Interface:
             row=0, column=0, sticky="e", padx=10, pady=5
         )
         lista_tamanhos = [8, 9, 10, 11, 12, 13, 14, 15, 16]
-        tamanho = ttk.Combobox(self.__janela, values=lista_tamanhos, width=17)
-        tamanho.grid(row=0, column=1, sticky="w", padx=10, pady=5)
+        self.__tamanho = ttk.Combobox(
+            self.__janela, values=lista_tamanhos, width=17)
+        self.__tamanho.grid(row=0, column=1, sticky="w", padx=10, pady=5)
 
         tk.Checkbutton(self.__janela, text="Maiúsculas", variable=self.maiusculas).grid(
             row=1, column=0, sticky="w", padx=10, pady=2
@@ -59,3 +63,7 @@ class Interface:
         copiarBtn.pack(side="left", padx=10)
 
         self.__janela.mainloop()
+
+    def gerar(self):
+
+        print(self.__tamanho.get())
