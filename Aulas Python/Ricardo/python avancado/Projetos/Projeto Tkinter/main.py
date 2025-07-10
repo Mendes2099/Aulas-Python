@@ -1,4 +1,5 @@
-from classes.classes import *
+from classes.autores import *
+from classes.interface import *
 
 
 def main():
@@ -16,7 +17,10 @@ def main():
     None.
     """
     autores()
-    welcome()
+    
+
+    interface = Interface()
+    interface.interface_user()
 
 
 if __name__ == "__main__":
