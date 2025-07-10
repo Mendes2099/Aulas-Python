@@ -1,4 +1,3 @@
-from classes.autores import *
 from classes.interface import *
 
 
@@ -16,11 +15,8 @@ def main():
     Return:
     None.
     """
-    autores()
-
-    interface = Interface()
-    interface.interface_user()
-    interface.gerar()
+    Autores.mostrar_autores()
+    Interface()
 
 
 if __name__ == "__main__":
