@@ -1,3 +1,4 @@
+from classes.classes import Livro, Ebook
 import os
 import sqlite3
 
@@ -23,7 +24,11 @@ def databaseStarter():
                 titulo TEXT NOT NULL,
                 autor TEXT NOT NULL,
                 tipo TEXT NOT NULL,
-                paginas INTEGER NOT NULL
+                paginas INTEGER NOT NULL,
+                stock INTEGER DEFAULT 0,
+                status TEXT DEFAULT 'Disponível',
+                emprestado_a TEXT DEFAULT 'Ninguém',
+                vendido_a TEXT DEFAULT 'Ninguém'
             )
         ''')
 
@@ -34,7 +39,11 @@ def databaseStarter():
                 autor TEXT NOT NULL,
                 tipo TEXT NOT NULL,
                 tamanho INTEGER NOT NULL,
-                extensao TEXT NOT NULL
+                extensao TEXT NOT NULL,
+                stock INTEGER DEFAULT 0,
+                status TEXT DEFAULT 'Disponível',
+                emprestado_a TEXT DEFAULT 'Ninguém',
+                vendido_a TEXT DEFAULT 'Ninguém'
             )
         ''')
 
@@ -63,12 +72,25 @@ def registar():
                 print(f"\nRegistro {i+1}:")
                 titulo = input("Título: ")
                 autor = input("Autor: ")
-                tipo = input("Tipo: ")
+                tipo = "livro"
                 paginas = int(input("Número de páginas: "))
+                while True:
+                    stock = input(
+                        "Quantidade em stock (pressione Enter para 1): ").strip()
+                    if stock == "":
+                        stock = 1
+                        break
+                    elif stock.isdigit() and int(stock) >= 0:
+                        stock = int(stock)
+                        break
+                    else:
+                        print("Por favor insira um número inteiro não-negativo.")
+                status = input(
+                    "Status ('Disponível' ou 'Emprestado'): ").strip() or "Disponível"
 
                 cursor.execute(
-                    "INSERT INTO livro (titulo, autor, tipo, paginas) VALUES (?, ?, ?, ?)",
-                    (titulo, autor, tipo, paginas)
+                    "INSERT INTO livro (titulo, autor, tipo, paginas, stock, status) VALUES (?, ?, ?, ?, ?, ?)",
+                    (titulo, autor, tipo, paginas, stock, status)
                 )
             print(f"\n{num} livro(s): {titulo} registrado(s) com sucesso!")
 
@@ -79,17 +101,28 @@ def registar():
                 print(f"\nRegistro {i+1}:")
                 titulo = input("Título: ")
                 autor = input("Autor: ")
-                tipo = input("Tipo: ")
+                tipo = "ebook"
                 tamanho = int(input("Tamanho (MB): "))
                 extensao = input("Extensão (ex: pdf, epub): ")
+                while True:
+                    stock = input(
+                        "Quantidade em stock (pressione Enter para 1): ").strip()
+                    if stock == "":
+                        stock = 1
+                        break
+                    elif stock.isdigit() and int(stock) >= 0:
+                        stock = int(stock)
+                        break
+                    else:
+                        print("Por favor insira um número inteiro não-negativo.")
+                status = input(
+                    "Status ('Disponível' ou 'Emprestado'): ").strip() or "Disponível"
 
                 cursor.execute(
-                    "INSERT INTO ebook (titulo, autor, tipo, tamanho, extensao) VALUES (?, ?, ?, ?, ?)",
-                    (titulo, autor, tipo, tamanho, extensao)
+                    "INSERT INTO ebook (titulo, autor, tipo, tamanho, extensao, stock, status) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    (titulo, autor, tipo, tamanho, extensao, stock, status)
                 )
-
             print(f"\n{num} e-book(s): {titulo} registrado(s) com sucesso!")
-
         else:
             print("Tipo inválido. Use 'livro' ou 'ebook'.")
 
@@ -129,7 +162,32 @@ def pesquisar():
 
         print(f"\nRegistros encontrados em {table}:\n")
         for row in rows:
-            print(" | ".join(str(col) for col in row))
+            if table == "livro":
+                obj = Livro(
+                    id=row[0],
+                    titulo=row[1],
+                    autor=row[2],
+                    tipo=row[3],
+                    stock=row[5],
+                    status=row[6],
+                    emprestado_a=row[7],
+                    vendido_a=row[8],
+                    paginas=row[4]
+                )
+            else:
+                obj = Ebook(
+                    id=row[0],
+                    titulo=row[1],
+                    autor=row[2],
+                    tipo=row[3],
+                    stock=row[6],
+                    status=row[7],
+                    emprestado_a=row[8],
+                    vendido_a=row[9],
+                    tamanho=row[4],
+                    extensao=row[5]
+                )
+            print(obj)
             print("-" * 40)
 
     except Exception as e:
@@ -142,8 +200,40 @@ def pesquisar():
 
 
 def vender():
-    print("Função 'vender' ainda não implementada.")
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        selection = input(
+            'Deseja vender um livro ou um e-book? ').strip().lower()
+        if selection not in ["livro", "ebook", "e-book"]:
+            print("Tipo inválido.")
+            return
+        titulo = input('Qual é o título? ').strip()
+        table = "livro" if selection == "livro" else "ebook"
+        cursor.execute(
+            f"SELECT id, stock, status FROM {table} WHERE LOWER(titulo) = LOWER(?)", (titulo,))
+        row = cursor.fetchone()
+    except Exception as e:
+        print('Erro ao vender:', e)
+    finally:
+        conn.close()
 
 
 def emprestar():
-    print("Função 'emprestar' ainda não implementada.")
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        selection = input(
+            'Deseja emprestar um livro ou um e-book? ').strip().lower()
+        if selection not in ["livro", "ebook", "e-book"]:
+            print("Tipo inválido.")
+            return
+        titulo = input('Qual é o título? ').strip()
+        table = "livro" if selection == "livro" else "ebook"
+        cursor.execute(
+            f"SELECT id, stock, status FROM {table} WHERE LOWER(titulo) = LOWER(?)", (titulo,))
+        row = cursor.fetchone()
+    except Exception as e:
+        print('Erro ao emprestar:', e)
+    finally:
+        conn.close()
