@@ -16,6 +16,10 @@ class Autores:
 
 
 class Interface:
+    """
+    Display gráfico principal
+    """
+
     def __init__(self):
         self.__janela = tk.Tk()
         self.__janela.title("Gerador de Passwords")
@@ -108,5 +112,11 @@ class Interface:
         """
         Copia a password gerada para a área de transferência.
         """
-        messagebox.showinfo(
-            "Mensaguem haha", "Ainda por implementar.")
+        password = self.__resultado.get()
+        if password:
+            self.__janela.clipboard_clear()
+            self.__janela.clipboard_append(password)
+            messagebox.showinfo("Copiado", "Password copiada.")
+        else:
+            messagebox.showwarning(
+                "Aviso", "Nenhuma password gerada para copiar.")

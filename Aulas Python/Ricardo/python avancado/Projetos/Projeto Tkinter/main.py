@@ -3,12 +3,11 @@ from classes.interface import *
 
 def main():
     """
-    -> Executa o programa principal de gestão de livros.
+    -> Executa o programa principal.
 
     Passos:
     1. Mostra os autores do projeto.
-    2. Exibe mensagem de boas-vindas.
-    3. ...
+    2. Executa a class interface que mostra o display gráfico
     Param:
     None.
 
