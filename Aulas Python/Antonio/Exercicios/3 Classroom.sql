@@ -1,37 +1,3 @@
-# ! Modelo ER
-
-Entidades Fortes
-- Obra (codigo_obra, titulo, isbn, doi, ano_publicacao, num_exemplares, estado, data_aquisicao, estado_fisico)- 
-- Tipo_Obra (codigo_tipo, nome)
-- Dominio (codigo_dominio, nome, descricao)
-- Editora (codigo_editora, nome, localidade, pais)
-- Autor (codigo_autor, nome_proprio, nome_familia, nacionalidade)
-- Aluno (codigo_aluno, nome_completo, email, telefone, data_registo)
-- Curso (codigo_curso, nome)
-- Departamento (codigo_departamento, nome)
-- Localizacao (codigo_local, andar, estante, prateleira)
-
-Entidade Fraca
-- Requisicao (codigo_requisicao, data_requisicao, data_prevista_entrega, data_entrega_efetiva, multa, estado)
-
-Depende de Obra e Aluno
-
-# ! Diagrama ER
-
-[Obra]──<possui>──[Tipo_Obra]
-   │
-   ├──<pertence>──[Dominio]
-   │
-   ├──<publicada_por>──[Editora]
-   │
-   ├──<tem_localizacao>──[Localizacao]
-   │
-   ├──<escrita_por>──<──[Autor]
-   │
-   └──<requisitada_em>──[Requisicao]──<feita_por>──[Aluno]──<matriculado_em>──[Curso]──<pertence>──[Departamento]
-
-
-# ! Modelo Relacional
 create database if not exists biblio;
 use biblio;
 
