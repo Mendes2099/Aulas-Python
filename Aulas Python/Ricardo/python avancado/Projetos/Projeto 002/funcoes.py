@@ -8,8 +8,6 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "Ex2.db")
 
-# TODO Adicionei mais um atributo (blocked) á tabela users para que possamos "trancar" users através das tentativas através de uma valiação
-
 
 def init_db():
     con = sqlite3.connect(DB_PATH)
@@ -19,6 +17,7 @@ def init_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE NOT NULL,
             password BLOB NOT NULL,
+            tentativas INTEGER DEFAULT 0,
             blocked INTEGER DEFAULT 0 
     )''')
     con.commit()
@@ -54,7 +53,6 @@ def login():
     username = login_username.get().strip()
     password = login_password.get()
 
-# TODO Validação
     if not username or not password:
         messagebox.showwarning(
             "Dados em falta", "Preencha username e password")
@@ -62,22 +60,49 @@ def login():
     try:
         con = sqlite3.connect(DB_PATH)
         cursor = con.cursor()
+        # Fetch da password
         cursor.execute(
             "SELECT password FROM user WHERE username = ?", (username,))
         result = cursor.fetchone()
-        con.close()
+        # Fetch das tentativas
+        cursor.execute(
+            "SELECT tentativas FROM user WHERE username = ?", (username,))
+        tentativas = cursor.fetchone()[0]
+        # Fetch do satus blocked
+        cursor.execute(
+            "SELECT blocked FROM user WHERE username = ?", (username,))
+        blockedSatus = cursor.fetchone()[0]
     except Exception as e:
-        messagebox.showerror("Erro", f"{str(e)}")
+        if result is None:
+            messagebox.showerror("Erro", "User não existe")
+            return
+        else:
+            messagebox.showerror("Erro", f"{str(e)}")
 
-    if result is None:
-        messagebox.showerror("Erro", "User não existe")
+    if blockedSatus == 1:
+        messagebox.showerror("Erro", "User bloqueado")
+        con.close()
+        return
 
     if result and checkpw(password.encode("utf-8"), result[0]):
         messagebox.showinfo("Sucesso", "Login bem-sucedido!")
         login_username.delete(0, tk.END)
         login_password.delete(0, tk.END)
     else:
-        messagebox.showerror("Erro", "Username ou password incorretos")
+        tentativas += 1
+        cursor.execute("UPDATE user SET tentativas = ?", (tentativas,))
+        if tentativas == 3:
+            cursor.execute("UPDATE user SET blocked = ?", (1,))
+            messagebox.showerror("Erro", "Número de tentativas excedido.")
+            con.commit()
+            con.close()
+            return
+        else:
+            messagebox.showerror("Erro", "Username ou password incorretos")
+            tk.Message(
+                aba_login, text=f'{3-tentativas} tentativas restante(s)', bg='lightgreen').grid(row=3, column=0)
+            con.commit()
+            con.close()
 
 
 # Interface
@@ -117,6 +142,7 @@ login_password.grid(row=1, column=1, pady=5)
 
 ttk.Button(aba_login, text="Login", command=login).grid(
     row=2, column=0, columnspan=2, pady=10)
+
 
 # Inicializar base de dados
 init_db()
