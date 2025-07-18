@@ -47,8 +47,7 @@ CREATE TABLE IF NOT EXISTS country_languages (
     CONSTRAINT fk_country_languages_country FOREIGN KEY (country_id) REFERENCES countries(country_id),
     CONSTRAINT fk_country_languages_language FOREIGN KEY (language_id) REFERENCES languages(language_id)
 );
-
--- ! Inserção de dados
+-- !
 INSERT INTO continents(name) VALUES("North America");
 INSERT INTO continents(name) VALUES("South America");
 INSERT INTO continents(name) VALUES("Antartica");
@@ -57,7 +56,7 @@ INSERT INTO continents(name) VALUES("Africa");
 INSERT INTO continents(name) VALUES("Asia");
 INSERT INTO continents(name) VALUES("Oceania");
 
+SELECT * FROM continents;
 
-INSERT INTO regions(name,continent_id) VALUES("Western Europe");
-
-INSERT INTO contries(name,area,national_day,country_code2,country_code3,region_id) VALUES("Italy",30134.00,1861-03-17,"IT","ITA",3);
+INSERT INTO regions(name,continent_id) VALUES("Western Europe",4);
+INSERT INTO countries(name,area,national_day,country_code2,country_code3,region_id) VALUES ("Italy",30134.00,1861-03-17,"IT","ITA",3);
