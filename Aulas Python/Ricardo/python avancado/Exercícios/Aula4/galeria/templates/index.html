@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página Home – Aulas Flask</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #121212;
+        color: #ffffff;
+        background-image: url("https://cdn.pixabay.com/photo/2016/11/19/22/52/coding-1841550_1280.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: -1;
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 0;
+        background: rgba(31, 31, 31, 0.9);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .menu {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+      }
+      .menu a {
+        text-decoration: none;
+        color: #ffffff;
+        transition: color 0.3s;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+      .menu a:hover {
+        color: #00bcd4;
+      }
+      .menu img {
+        margin-right: 0.5rem;
+        width: 24px;
+        height: 24px;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: calc(100vh - 80px);
+        animation: fadeIn 2s ease;
+        padding: 1rem;
+      }
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: #00bcd4;
+      }
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background: rgba(31, 31, 31, 0.9);
+        color: #ffffff;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <ul class="menu">
+        <li>
+          <a href="/">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/home.png"
+              alt="Home"
+            />
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/sobre">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/info.png"
+              alt="Sobre"
+            />
+            Sobre
+          </a>
+        </li>
+        <li>
+          <a href="/flask">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/globe.png"
+              alt="Flask"
+            />
+            Flask
+          </a>
+        </li>
+      </ul>
+    </header>
+    <main>
+      <div>
+        <h1>Bem‑vindo ao nosso Site!</h1>
+        <p>
+          Este site foi desenvolvido nas aulas de Python para introduzir o
+          micro‑framework Flask.
+        </p>
+      </div>
+    </main>
+    <footer>Desenvolvido por Ricardo Mourão</footer>
+  </body>
+</html>
+index.html You may be offline or with limited connectivity. Try downloading
+instead.

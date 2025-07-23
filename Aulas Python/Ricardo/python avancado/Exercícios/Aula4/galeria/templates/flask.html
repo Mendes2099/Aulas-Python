@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página Flask</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #121212;
+        color: #ffffff;
+        background-image: url("https://cdn.pixabay.com/photo/2018/01/20/09/38/web-3091006_1280.jpg");
+        background-size: cover;
+        background-position: center;
+        overflow-x: hidden;
+        position: relative;
+      }
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: -1;
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 0;
+        background: rgba(31, 31, 31, 0.9);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .menu {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+      }
+      .menu a {
+        text-decoration: none;
+        color: #ffffff;
+        transition: color 0.3s;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+      .menu a:hover {
+        color: #00bcd4;
+      }
+      .menu img {
+        margin-right: 0.5rem;
+        width: 24px;
+        height: 24px;
+      }
+      .floating-emoji {
+        position: absolute;
+        font-size: 2rem;
+        animation: float 5s infinite ease-in-out;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      main {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 1rem;
+        padding: 2rem;
+        align-items: start;
+      }
+      main > * {
+        grid-column: 2;
+      }
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        grid-column: span 3;
+        text-align: center;
+      }
+      section {
+        background: rgba(31, 31, 31, 0.8);
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1.5s ease;
+      }
+      section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: #00bcd4;
+      }
+      section p,
+      section ul {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      section ul {
+        list-style: disc inside;
+      }
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background: rgba(31, 31, 31, 0.9);
+        color: #ffffff;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <ul class="menu">
+        <li>
+          <a href="/">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/home.png"
+              alt="Home"
+            />
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/sobre">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/info.png"
+              alt="Sobre"
+            />
+            Sobre
+          </a>
+        </li>
+        <li>
+          <a href="/flask">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/globe.png"
+              alt="Flask"
+            />
+            Flask
+          </a>
+        </li>
+      </ul>
+    </header>
+
+    <!-- Floating Emojis -->
+    <span class="floating-emoji" style="top: 10%; left: 20%">🐍</span>
+    <span class="floating-emoji" style="top: 30%; right: 15%">💻</span>
+    <span class="floating-emoji" style="top: 50%; left: 5%">🚀</span>
+    <span class="floating-emoji" style="top: 70%; right: 10%">🔥</span>
+
+    <main>
+      <h1>Descubra o Micro‑framework Flask!</h1>
+
+      <section>
+        <h2>O que é Flask?</h2>
+        <p>
+          Flask é um micro‑framework em Python que fornece apenas o núcleo
+          mínimo para criar aplicações web, deixando a cargo do desenvolvedor a
+          escolha de bibliotecas adicionais (ORM, autenticação, validação etc.).
+        </p>
+        <p>
+          Ele é construído sobre Werkzeug (WSGI) e Jinja2 (templates), e é ideal
+          para protótipos rápidos, APIs REST e microsserviços.
+        </p>
+      </section>
+
+      <section>
+        <h2>Vantagens do Flask</h2>
+        <ul>
+          <li>
+            ⚡ <strong>Leveza:</strong> Inclui somente o essencial, sem camadas
+            desnecessárias.
+          </li>
+          <li>
+            📦 <strong>Extensível:</strong> Grande ecossistema de extensões como
+            Flask‑SQLAlchemy, Flask‑Login e Flask‑Migrate.
+          </li>
+          <li>
+            🚀 <strong>Desenvolvimento Rápido:</strong> Servidor de dev com
+            recarga automática e debug integrado.
+          </li>
+          <li>
+            🧩 <strong>Modular:</strong> Suporte a Blueprints para organizar
+            grandes aplicações.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Principais Características</h2>
+        <ul>
+          <li>
+            <strong>Roteamento simples:</strong> Decorators
+            <code>@app.route()</code> para declarar URLs.
+          </li>
+          <li>
+            <strong>Templates Jinja2:</strong> Herança, loops e condicionais em
+            HTML.
+          </li>
+          <li>
+            <strong>Static files:</strong> CSS, JS e imagens servidos via pasta
+            <code>/static</code>.
+          </li>
+          <li>
+            <strong>Debug Mode:</strong> Tracebacks interativos e reload
+            automático.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Extensões Comuns</h2>
+        <ul>
+          <li>
+            <strong>Flask‑SQLAlchemy:</strong> Integração com bancos de dados
+            relacionais.
+          </li>
+          <li>
+            <strong>Flask‑Migrate:</strong> Controle de versões de esquema com
+            Alembic.
+          </li>
+          <li><strong>Flask‑Login:</strong> Autenticação de utilizadores.</li>
+          <li>
+            <strong>Flask‑WTF:</strong> Validação e gerenciamento de
+            formulários.
+          </li>
+          <li>
+            <strong>Flask‑RESTful:</strong> Criação de APIs REST de forma
+            simples.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Concluindo</h2>
+        <p>
+          Flask combina simplicidade e flexibilidade, sendo perfeito para
+          aprender web em Python e escalar para projetos maiores com extensões.
+          Comece com um “hello world” e evolua para aplicações modulares e
+          seguras.
+        </p>
+      </section>
+    </main>
+
+    <footer>Desenvolvido por Ricardo Mourão</footer>
+  </body>
+</html>
+... You may be offline or with limited connectivity. Try downloading instead.

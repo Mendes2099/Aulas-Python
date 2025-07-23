@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página Sobre – Aulas Flask</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #121212;
+        color: #ffffff;
+        background-image: url("https://cdn.pixabay.com/photo/2017/08/06/03/39/technology-2589463_1280.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: -1;
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 0;
+        background: rgba(31, 31, 31, 0.9);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .menu {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+      }
+      .menu a {
+        text-decoration: none;
+        color: #ffffff;
+        transition: color 0.3s;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+      .menu a:hover {
+        color: #00bcd4;
+      }
+      .menu img {
+        margin-right: 0.5rem;
+        width: 24px;
+        height: 24px;
+      }
+      main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 2rem;
+        padding: 2rem;
+        align-items: start;
+      }
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      section {
+        background: rgba(31, 31, 31, 0.8);
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1.5s ease;
+      }
+      section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: #00bcd4;
+      }
+      section p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      pre {
+        background: #1e1e1e;
+        color: #00ffcc;
+        padding: 1rem;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+      code {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        font-size: 0.95rem;
+        color: #ffb86c;
+      }
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background: rgba(31, 31, 31, 0.9);
+        color: #ffffff;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <ul class="menu">
+        <li>
+          <a href="/">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/home.png"
+              alt="Home"
+            />
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/sobre">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/info.png"
+              alt="Sobre"
+            />
+            Sobre
+          </a>
+        </li>
+        <li>
+          <a href="/flask">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/globe.png"
+              alt="Flask"
+            />
+            Flask
+          </a>
+        </li>
+      </ul>
+    </header>
+    <main>
+      <h1>Sobre o Flask</h1>
+
+      <section>
+        <h2>A Decorator <code>@app.route</code></h2>
+        <p>
+          O decorator <code>@app.route</code> em Flask serve para mapear uma
+          rota HTTP (por padrão GET) a uma função Python dentro da aplicação. É
+          assim que associamos URLs a comportamentos específicos no servidor.
+        </p>
+        <h3>O que são Rotas?</h3>
+        <p>
+          Rotas são caminhos ou URLs que identificam recursos ou funcionalidades
+          na aplicação Flask. Por exemplo, a rota <code>/sobre</code> invoca a
+          função que renderiza a página "Sobre".
+        </p>
+        <pre><code>@app.route('/sobre')
+def sobre():
+    return render_template('sobre.html')</code></pre>
+        <p>
+          Neste exemplo, ao aceder <code>http://localhost:5000/sobre</code>, a
+          função <code>sobre()</code> será executada e retornará o template
+          correspondente.
+        </p>
+      </section>
+
+      <section>
+        <h2>O Protocolo HTTP</h2>
+        <p>
+          HTTP (Hypertext Transfer Protocol) é o protocolo que define a
+          comunicação entre clientes (navegadores, apps) e servidores web. Ele
+          regula como as solicitações e respostas devem ser formatadas e
+          transmitidas.
+        </p>
+        <h3>O Método GET</h3>
+        <p>
+          O método GET é usado para recuperar dados sem alterar o estado do
+          servidor. Em Flask, rotas sem métodos explícitos aceitam GET por
+          padrão, sendo ideal para páginas estáticas ou consultas simples.
+        </p>
+      </section>
+
+      <section>
+        <h2>Endpoints</h2>
+        <p>
+          Um endpoint combina uma URL e um método HTTP para definir um ponto de
+          acesso a um recurso ou funcionalidade. No Flask, cada rota registrada
+          com <code>@app.route</code> cria um endpoint.
+        </p>
+        <p>
+          Exemplo de endpoint para listar itens:
+          <code>@app.route('/itens')</code> com método GET.
+        </p>
+      </section>
+
+      <section>
+        <h2>Resumo</h2>
+        <p><strong>Rotas</strong>: URLs que acionam funções Python na app.</p>
+        <p><strong>HTTP</strong>: Protocolo de comunicação web.</p>
+        <p><strong>GET</strong>: Método usado para obter dados.</p>
+        <p>
+          <strong>Endpoints</strong>: Combinação de rota e método HTTP que expõe
+          funcionalidades.
+        </p>
+      </section>
+    </main>
+    <footer>Desenvolvido por Ricardo Mourão</footer>
+  </body>
+</html>
+... You may be offline or with limited connectivity. Try downloading instead.
