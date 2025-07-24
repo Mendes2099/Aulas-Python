@@ -60,3 +60,11 @@ SELECT * FROM continents;
 
 INSERT INTO regions(name,continent_id) VALUES("Western Europe",4);
 INSERT INTO countries(name,area,national_day,country_code2,country_code3,region_id) VALUES ("Italy",30134.00,1861-03-17,"IT","ITA",3);
+
+
+SELECT * FROM continents;  
+SELECT * FROM countries;
+UPDATE continents SET name = "Africa" WHERE continent_id = 1;
+
+DELETE FROM countries;
+DELETE FROM regions;
