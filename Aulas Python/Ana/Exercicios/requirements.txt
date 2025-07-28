@@ -1,0 +1,11 @@
+# Dependências principais
+flask==2.0.1
+twilio==7.15.4
+SpeechRecognition==3.8.1
+pydub==0.25.1
+openai==0.27.8
+requests==2.28.1
+
+# Dependências secundárias
+gunicorn==20.1.0
+python-dotenv==0.19.2
