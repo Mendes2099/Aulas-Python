@@ -244,7 +244,7 @@ AND license_plate IN (
 -- For that I need to connect the last query and the fligths table with the passangers and airports
 
 
--- Find passengers on those flights (I saw afterwards that Fiftyville's airport id is 8 so that must be the departure)
+-- Find passengers on those flights
 SELECT *
 FROM passengers
 WHERE passport_number IN (
@@ -266,34 +266,97 @@ AND flight_id IN (
     WHERE day = 29 AND month = 7 AND year = 2024 ORDER BY hour ASC LIMIT 1;
 );
 
--- Output
+-- +-----------+-----------------+------+
 -- | flight_id | passport_number | seat |
 -- +-----------+-----------------+------+
--- | 18        | 3592750733      | 4C   |
 -- | 36        | 1695452385      | 3B   |
 -- | 36        | 5773159633      | 4A   |
 -- | 36        | 8294398571      | 6C   |
 -- | 36        | 1988161715      | 6D   |
 -- +-----------+-----------------+------+
 
--- Great the thief must be one of these 5 guys. 
+-- Great the thief must be one of these 4 guys. 
 
--- The next step is to combine your suspect data (people) with flight data to figure out:
+-- Now lets look at who withdrew money on Leggett Street before the theft.
 
--- ✈️ Which flight each suspect was on,
--- 🌍 Where that flight was going,
--- 🧍‍♀️ Which of these people was most likely the thief, based on flight and seat,
--- 🧑‍🤝‍🧑 Who their accomplice was (maybe a call recipient? or someone else on the same flight?).
--- ✅ Strategy for Combining Queries:
+SELECT people.name, people.passport_number, bank_accounts.account_number
+FROM bank_accounts
+JOIN people ON people.id = bank_accounts.person_id
+WHERE account_number IN (
+    28500762, 28296815, 76054385, 49610011,
+    16153065, 25506511, 81061156, 26013199
+);
 
--- You already have:
+-- +---------+-----------------+----------------+
+-- |  name   | passport_number | account_number |
+-- +---------+-----------------+----------------+
+-- | Bruce   | 5773159633      | 49610011       |
+-- | Diana   | 3592750733      | 26013199       |
+-- | Brooke  | 4408372428      | 16153065       |
+-- | Kenny   | 9878712108      | 28296815       |
+-- | Iman    | 7049073643      | 25506511       |
+-- | Luca    | 8496433585      | 28500762       |
+-- | Taylor  | 1988161715      | 76054385       |
+-- | Benista | 9586786673      | 81061156       |
+-- +---------+-----------------+----------------+
 
--- A list of people who match the phone and car activity filters,
--- A list of passenger records (flight ID + passport),
+-- Gotcha! I deduce the thief must be Bruce (lol)
 
--- You can now JOIN passengers with flights and airports to learn:
--- Which flight each suspect was on,
--- What city the destination airport is in,
--- Then backtrack who left from Fiftyville (check airports.city = 'Fiftyville' in flights.origin_airport_id),
--- And then link it all back to people to isolate the individual.
+SELECT * FROM people WHERE name = "Bruce";
 
+-- +--------+-------+----------------+-----------------+---------------+
+-- |   id   | name  |  phone_number  | passport_number | license_plate |
+-- +--------+-------+----------------+-----------------+---------------+
+-- | 686048 | Bruce | (367) 555-5533 | 5773159633      | 94KL13X       |
+-- +--------+-------+----------------+-----------------+---------------+
+
+-- Now let's try and find the city he escaped to
+
+SELECT * FROM airports;
+
+-- +----+--------------+-----------------------------------------+---------------+
+-- | id | abbreviation |                full_name                |     city      |
+-- +----+--------------+-----------------------------------------+---------------+
+-- | 1  | ORD          | O'Hare International Airport            | Chicago       |
+-- | 2  | PEK          | Beijing Capital International Airport   | Beijing       |
+-- | 3  | LAX          | Los Angeles International Airport       | Los Angeles   |
+-- | 4  | LGA          | LaGuardia Airport                       | New York City |
+-- | 5  | DFS          | Dallas/Fort Worth International Airport | Dallas        |
+-- | 6  | BOS          | Logan International Airport             | Boston        |
+-- | 7  | DXB          | Dubai International Airport             | Dubai         |
+-- | 8  | CSF          | Fiftyville Regional Airport             | Fiftyville    |
+-- | 9  | HND          | Tokyo International Airport             | Tokyo         |
+-- | 10 | CDG          | Charles de Gaulle Airport               | Paris         |
+-- | 11 | SFO          | San Francisco International Airport     | San Francisco |
+-- | 12 | DEL          | Indira Gandhi International Airport     | Delhi         |
+-- +----+--------------+-----------------------------------------+---------------+
+
+SELECT * FROM flights WHERE id = 36;
+
+-- +----+-------------------+------------------------+------+-------+-----+------+--------+
+-- | id | origin_airport_id | destination_airport_id | year | month | day | hour | minute |
+-- +----+-------------------+------------------------+------+-------+-----+------+--------+
+-- | 36 | 8                 | 4                      | 2024 | 7     | 29  | 8    | 20     |
+-- +----+-------------------+------------------------+------+-------+-----+------+--------+
+
+--  He seems to have fled to (-- | 4  | LGA          | LaGuardia Airport                       | New York City |)
+-- Now to pinpoint the accomplice
+
+SELECT * FROM phone_calls WHERE day = 28 AND month = 7 AND year = 2024 AND duration < 60 AND caller = (367) 555-5533;
+
+-- Output
+-- | id  |     caller     |    receiver    | year | month | day | duration |
+-- +-----+----------------+----------------+------+-------+-----+----------+
+-- | 233 | (367) 555-5533 | (375) 555-8161 | 2024 | 7     | 28  | 45       |
+-- Note Taking a second look at the calle Bruce made we and backtrace the caller to the number (375) 555-8161 
+-- +-----+----------------+----------------+------+-------+-----+----------+
+
+SELECT name,phone_number FROM people WHERE phone_number = "(375) 555-8161";
+
+-- +-------+----------------+
+-- | name  |  phone_number  |
+-- +-------+----------------+
+-- | Robin | (375) 555-8161 |
+-- +-------+----------------+
+
+-- Seems like Robin ben Robin'. Case closed!
