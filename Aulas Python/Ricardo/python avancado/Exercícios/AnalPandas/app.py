@@ -94,5 +94,4 @@ print(df.iloc[0, 0])
 print(df[df["Plataforma"] == "Binance"]["Valor Investido (€)"].mean())
 
 # Média investida em Bitcoin
-# Corrigido: imprime a média dos valores investidos em Bitcoin
 print(df[df["Criptomoeda"] == "Bitcoin"]["Valor Investido (€)"].mean())
