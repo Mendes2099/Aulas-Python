@@ -16,21 +16,6 @@ Entidade Fraca
 
 Depende de Obra e Aluno
 
-# ! Diagrama ER
-
-[Obra]──<possui>──[Tipo_Obra]
-   │
-   ├──<pertence>──[Dominio]
-   │
-   ├──<publicada_por>──[Editora]
-   │
-   ├──<tem_localizacao>──[Localizacao]
-   │
-   ├──<escrita_por>──<──[Autor]
-   │
-   └──<requisitada_em>──[Requisicao]──<feita_por>──[Aluno]──<matriculado_em>──[Curso]──<pertence>──[Departamento]
-
-
 # ! Modelo Relacional
 create database if not exists biblio;
 use biblio;
@@ -130,3 +115,105 @@ CREATE TABLE Requisicao (
     FOREIGN KEY (codigo_obra) REFERENCES Obra(codigo_obra),
     FOREIGN KEY (codigo_aluno) REFERENCES Aluno(codigo_aluno)
 );
+
+# Diagrama MR
+
+Table: Editora
++------------------+------------+
+| Attribute        | Constraint |
++------------------+------------+
+| codigo_editora   | PK         |
+| nome             | NOT NULL   |
+| localidade       | NOT NULL   |
+| pais             | NOT NULL   |
++------------------+------------+
+
+Table: Autor
++------------------+------------+
+| Attribute        | Constraint |
++------------------+------------+
+| codigo_autor     | PK         |
+| nome_proprio     | NOT NULL   |
+| nome_familia     | NOT NULL   |
+| nacionalidade    |            |
++------------------+------------+
+
+Table: Dominio
++------------------+------------+
+| Attribute        | Constraint |
++------------------+------------+
+| codigo_dominio   | PK         |
+| nome             | NOT NULL   |
++------------------+------------+
+
+Table: Tipo_Obra
++------------------+------------+
+| Attribute        | Constraint |
++------------------+------------+
+| codigo_tipo      | PK         |
+| nome             | NOT NULL   |
++------------------+------------+
+
+Table: Curso
++------------------+------------+
+| Attribute        | Constraint |
++------------------+------------+
+| codigo_curso     | PK         |
+| nome             | NOT NULL   |
++------------------+------------+
+
+Table: Aluno
++------------------+------------+
+| Attribute        | Constraint |
++------------------+------------+
+| codigo_aluno     | PK         |
+| nome_completo    | NOT NULL   |
+| codigo_curso     | FK(Curso)  |
++------------------+------------+
+
+Table: Obra
++----------------------+------------+
+| Attribute            | Constraint |
++----------------------+------------+
+| codigo_obra          | PK         |
+| titulo               | NOT NULL   |
+| ano_publicacao       |            |
+| localidade_publicacao|            |
+| num_exemplares       | NOT NULL   |
+| estado_fisico        |            |
+| codigo_editora       | FK(Editora)|
+| codigo_dominio       | FK(Dominio)|
+| codigo_tipo          | FK(Tipo_Obra)|
++----------------------+------------+
+
+Table: Localizacao
++------------------+------------+
+| Attribute        | Constraint |
++------------------+------------+
+| codigo_local     | PK         |
+| andar            | NOT NULL   |
+| estante          | NOT NULL   |
+| prateleira       | NOT NULL   |
+| codigo_obra      | FK(Obra), UNIQUE |
++------------------+------------+
+
+Table: Obra_Autor
++------------------+------------+
+| Attribute        | Constraint |
++------------------+------------+
+| codigo_obra      | PK, FK(Obra)   |
+| codigo_autor     | PK, FK(Autor)  |
++------------------+------------+
+
+Table: Requisicao
++------------------+------------+
+| Attribute        | Constraint |
++------------------+------------+
+| codigo_requisicao| PK         |
+| codigo_obra      | FK(Obra)   |
+| codigo_aluno     | FK(Aluno)  |
+| data_requisicao  | NOT NULL   |
+| hora_requisicao  | NOT NULL   |
+| data_entrega     |            |
+| hora_entrega     |            |
++------------------+------------+
