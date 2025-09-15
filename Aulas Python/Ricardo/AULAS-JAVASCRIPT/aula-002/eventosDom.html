@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos Dom</title>
+
+  <style>
+    body {
+      background-color: blueviolet;
+      font-size: 16pt;
+    }
+
+    #contentor {
+      background-color: blue;
+      width: 50%;
+      min-height: 350px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 50px;
+      margin-top: 50px;
+    }
+
+    #btn,
+    #btnRegistar {
+      padding: 20px 40px;
+      font-size: 20px;
+      background-color: white;
+      margin-top: 50px;
+      border-radius: 20px;
+      margin-right: 10px;
+    }
+
+    .campo {
+      margin-bottom: 20px;
+    }
+
+    .dado {
+      color: #fff;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="contentor">
+    <p id="paragrafo">
+      Eu sou um parágrafo
+    </p>
+    <div class="campo">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome">
+      <span class="dado" id="dado-nome"></span>
+    </div>
+    <div class="campo">
+      <label for="email">Email:</label>
+      <input type="email" id="email">
+      <span class="dado" id="dado-email"></span>
+    </div>
+    <div class="campo">
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade">
+      <span class="dado" id="dado-idade"></span>
+    </div>
+    <button id="btnRegistar">Registar</button>
+    <button id="btn">Clica Aqui</button>
+  </div>
+
+  <script>
+    let div = document.getElementById("contentor");
+
+    div.addEventListener("mouseenter", function () {
+      div.style.backgroundColor = "green";
+    });
+
+    div.addEventListener("mouseleave", function () {
+      div.style.backgroundColor = "blue";
+    });
+
+    div.addEventListener("mousedown", function () {
+      div.style.backgroundColor = "yellow";
+    });
+
+    div.addEventListener("mouseup", function () {
+      div.style.backgroundColor = "red";
+    });
+
+    // Função para registar e mostrar os dados
+    document.getElementById("btnRegistar").addEventListener("click", function () {
+      document.getElementById("dado-nome").textContent = document.getElementById("nome").value;
+      document.getElementById("dado-email").textContent = document.getElementById("email").value;
+      document.getElementById("dado-idade").textContent = document.getElementById("idade").value;
+    });
+  </script>
+</body>
+
+</html>
