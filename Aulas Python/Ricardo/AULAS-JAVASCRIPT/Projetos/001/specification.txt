@@ -1,0 +1,14 @@
+HTML tags used (10+):
+<h1>, <h2>, <p>, <a>, <img>, <ul>, <ol>, <li>, <form>, <input>, <button>, <textarea>, <nav>, <div>
+
+CSS selectors (5):
+body, h1, .navbar, #hobby-image, button
+
+CSS properties (5):
+font-family, background-color, color, text-align, margin, width, border-radius, padding
+
+Bootstrap features:
+Used Bootstrap navbar, grid system, buttons, and form styling.
+
+JavaScript feature:
+Added a button that changes text color and shows an alert when clicked.

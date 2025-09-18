@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+
+  let userInput = prompt("Digite um número:");
+  let number = parseInt(userInput);
+
+  if (isNaN(number) || number < 1) {
+    alert("Por favor, digite um número inteiro positivo válido.");
+  } else {
+    document.write("<h2>Números primos de 1 a " + number + ":</h2>");
+    let foundPrimes = [];
+    for (let i = 1; i <= number; i++) {
+      if (isPrime(i)) {
+        foundPrimes.push(i);
+      }
+    }
+    if (foundPrimes.length > 0) {
+      document.write("<p>" + foundPrimes.join(", ") + "</p>");
+    } else {
+      document.write("<p>Não há números primos no intervalo.</p>");
+    }
+
+    if (!isPrime(number)) {
+      document.write("<p>O número " + number + " não é primo.</p>");
+    }
+  }
+</script>

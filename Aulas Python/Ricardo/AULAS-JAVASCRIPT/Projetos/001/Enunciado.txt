@@ -1,0 +1,4 @@
+Crie um quizz interactivo online.
+Deve ser apresentado na mesama página, com um mínimo de 10 questões de escolha múltipla ou verdadeiro ou falso. 
+Ao submeter as respostas deverão ser apresentadas as respostas certas e erradas com formatação adequada e mostrar a pontuação ao utilizador.
+

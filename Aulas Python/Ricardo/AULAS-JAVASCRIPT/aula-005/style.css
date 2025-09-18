@@ -1,0 +1,21 @@
+#body {
+  background-color: black;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#calculadora-estrutura {
+  background-color: rgb(49, 47, 47);
+  border: 1px solid yellow;
+  padding: 25px;
+}
+
+#ecra-resultado {
+  min-height: 65px;
+  width: 90%;
+  background-color: rgb(32, 22, 22);
+  margin: 0 auto;
+}
+
+.row {
+  margin: 0 auto;
+}

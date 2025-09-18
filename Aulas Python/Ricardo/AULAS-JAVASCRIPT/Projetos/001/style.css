@@ -1,0 +1,23 @@
+/* Custom CSS */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+h1 {
+  color: #007bff;
+  text-align: center;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+#hobby-image {
+  width: 300px;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px 20px;
+}
