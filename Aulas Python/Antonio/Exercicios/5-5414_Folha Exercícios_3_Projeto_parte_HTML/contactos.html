@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Contacte-nos</title>
+</head>
+
+<body>
+  <h1>Contacte-nos</h1>
+
+  <form>
+    <label for="nome">Nome*:</label><br>
+    <input type="text" id="nome" name="nome" required autofocus><br><br>
+
+    <label for="empresa">Empresa:</label><br>
+    <input type="text" id="empresa" name="empresa"><br><br>
+
+    <label for="email">E-mail*:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="telefone">Telefone:</label><br>
+    <input type="tel" id="telefone" name="telefone"><br><br>
+
+    <label for="assunto">O que procura:</label><br>
+    <select id="assunto" name="assunto">
+      <option value="vendas">Vendas</option>
+      <option value="suporte">Suporte</option>
+      <option value="atendimento">Atendimento Geral</option>
+    </select><br><br>
+
+    <label>Quero ser contactado:</label><br>
+    <input type="radio" id="telefone_contacto" name="contacto" value="telefone">
+    <label for="telefone_contacto">Por telefone</label>
+    <input type="radio" id="email_contacto" name="contacto" value="email">
+    <label for="email_contacto">Por e-mail</label><br><br>
+
+    <label for="mensagem">Mensagem:</label><br>
+    <textarea id="mensagem" name="mensagem" rows="5" cols="30"></textarea><br><br>
+
+    <input type="checkbox" id="autorizacao" name="autorizacao" required>
+    <label for="autorizacao">Autorizo a Países do Mundo a guardar os meus dados pessoais com o intuito de responder ao
+      meu pedido de contato.</label><br><br>
+
+    <button type="submit">Enviar mensagem</button>
+  </form>
+
+  <p><a href="paises.html">Voltar à página principal</a></p>
+</body>
+
+</html>
