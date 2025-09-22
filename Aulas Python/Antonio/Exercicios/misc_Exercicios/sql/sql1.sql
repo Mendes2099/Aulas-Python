@@ -1,24 +1,26 @@
+-- Criação do banco de dados
 CREATE DATABASE IF NOT EXISTS countries;
 USE countries;
 
-CREATE TABLE IF NOT EXISTS continents (
-    continent_id INT AUTO_INCREMENT PRIMARY KEY,
+-- Remove tabelas existentes para evitar conflitos
+DROP TABLE IF EXISTS countries;
+DROP TABLE IF EXISTS regions;
+DROP TABLE IF EXISTS continents;
+
+-- Criação das tabelas
+CREATE TABLE continents (
+    continent_id INT PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS languages (
-    language_id INT AUTO_INCREMENT PRIMARY KEY,
-    language VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS regions (
+CREATE TABLE regions (
     region_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     continent_id INT,
     CONSTRAINT fk_regions_continent FOREIGN KEY (continent_id) REFERENCES continents(continent_id)
 );
 
-CREATE TABLE IF NOT EXISTS countries (
+CREATE TABLE countries (
     country_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     area DECIMAL(10, 2) NOT NULL,
@@ -29,39 +31,45 @@ CREATE TABLE IF NOT EXISTS countries (
     CONSTRAINT fk_countries_region FOREIGN KEY (region_id) REFERENCES regions(region_id)
 );
 
-CREATE TABLE IF NOT EXISTS country_stats (
-    country_id INT,
-    year YEAR,
-    population INT,
-    gdp DECIMAL(15, 0),
-    PRIMARY KEY (country_id, year),
-    CONSTRAINT fk_country_stats_country FOREIGN KEY (country_id) REFERENCES countries(country_id)
-);
+-- Inserção de dados de exemplo (para testar as consultas)
+INSERT INTO continents (continent_id, name) VALUES 
+(1, 'Europa'),
+(2, 'Ásia');
 
-CREATE TABLE IF NOT EXISTS country_languages (
-    country_id INT,
-    language_id INT,
-    official TINYINT(1) NOT NULL,
-    PRIMARY KEY (country_id, language_id),
-    CONSTRAINT fk_country_languages_country FOREIGN KEY (country_id) REFERENCES countries(country_id),
-    CONSTRAINT fk_country_languages_language FOREIGN KEY (language_id) REFERENCES languages(language_id)
-);
+INSERT INTO regions (region_id, name, continent_id) VALUES 
+(1, 'Europa Ocidental', 1),
+(2, 'Europa Oriental', 1),
+(3, 'Ásia Central', 2);
 
-DROP DATABASE countries
+INSERT INTO countries (country_id, name, area, national_day, country_code2, country_code3, region_id) VALUES 
+(1, 'França', 643801.00, '1789-07-14', 'FR', 'FRA', 1),
+(2, 'Alemanha', 357582.00, '1990-10-03', 'DE', 'DEU', 1),
+(3, 'Rússia', 17125191.00, '1990-06-12', 'RU', 'RUS', 2),
+(4, 'Cazaquistão', 2724900.00, '1991-12-16', 'KZ', 'KAZ', 3),
+(5, 'Polónia', 312696.00, '1918-11-11', 'PL', 'POL', 2);
 
-CREATE DATABASE IF NOT EXISTS countries;
-USE countries;
+-- Consultas solicitadas
+-- 1. Maior área entre todos os países
+SELECT name, area
+FROM countries
+WHERE area = (SELECT MAX(area) FROM countries);
 
-CREATE TABLE IF NOT EXISTS continents(
-continent_id INT,
-name VARCHAR(255)
-);
+-- 2. Maior área entre todos os países por region_id
+SELECT c.region_id, r.name AS region_name, c.name AS country_name, MAX(c.area) AS max_area
+FROM countries c
+JOIN regions r ON c.region_id = r.region_id
+GROUP BY c.region_id, r.name;
 
-ALTER TABLE continents ADD PRIMARY KEY(continent_id);
-ALTER TABLE continents DROP PRIMARY KEY;
-ALTER TABLE continents DROP PRIMARY KEY;
-ALTER TABLE continents MODIFY COLUMN name VARCHAR(255) NOT NULL;
+-- 3. Maior área entre todos os países por nome de região
+SELECT r.name AS region_name, c.name AS country_name, MAX(c.area) AS max_area
+FROM countries c
+JOIN regions r ON c.region_id = r.region_id
+GROUP BY r.name;
 
-ALTER TABLE regions MODIFY COLUMN region_id AUTO_INCREMENT PRIMARY KEY;
-ALTER TABLE regions MODIFY COLUMN name VARCHAR(100) NOT NULL;
-ALTER TABLE regions ADD CONSTRAINT fk_continents FOREIGN KEY (continent_id);
+-- 4. Maior área entre todos os países por nome de região em que a área seja superior a 1000000 (um milhão de km²)
+SELECT r.name AS region_name, c.name AS country_name, MAX(c.area) AS max_area
+FROM countries c
+JOIN regions r ON c.region_id = r.region_id
+WHERE c.area > 1000000
+GROUP BY r.name
+HAVING MAX(c.area) > 1000000;
