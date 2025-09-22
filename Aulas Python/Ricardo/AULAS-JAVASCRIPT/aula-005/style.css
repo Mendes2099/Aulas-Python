@@ -1,4 +1,3 @@
-/* ...existing code... */
 body {
   background: linear-gradient(135deg, #232526 0%, #414345 100%);
   min-height: 100vh;
@@ -41,7 +40,6 @@ body {
   margin-bottom: 12px;
 }
 
-/* ...existing code... */
 .btn-number {
   flex: 1;
   margin: 0 4px;
@@ -62,7 +60,7 @@ body {
   transform: scale(1.07);
 }
 
-/* ...existing code... */
+
 
 #btn-clear {
   width: 100%;
@@ -84,5 +82,3 @@ body {
   color: #d9534f;
   transform: scale(1.03);
 }
-
-/* ...existing code... */
