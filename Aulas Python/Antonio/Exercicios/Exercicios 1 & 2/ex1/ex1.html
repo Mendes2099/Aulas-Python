@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Exemplo HTML</title>
+</head>
+
+<body>
+  <!-- Estrutura -->
+  <header id="topo" class="header">
+    <h1 class="titulo-principal">Bem-vindo à minha Página de Exemplo</h1>
+    <nav class="menu" id="menu">
+      <ul>
+        <li><a href="#secao1">Secção</a></li>
+        <li><a href="#artigo">Artigo</a></li>
+        <li><a href="#poema">Poema</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo" class="conteudo">
+    <!-- Secção com imagens -->
+    <section id="secao1" class="secao-imagens">
+      <h2>Galeria de Imagens</h2>
+      <img src="./download.jpg" alt="Imagem de exemplo 1" id="img1" class="img-exemplo">
+      <img src="./download.jpg" alt="Imagem de exemplo 2" id="img2" class="img-exemplo" width="150">
+      <img src="./download.jpg" alt="Imagem de exemplo 3" id="img3" class="img-exemplo">
+    </section>
+
+    <!-- Secção com texto, parágrafos, <pre> e poema -->
+    <section id="poema" class="secao-texto">
+      <h2>Texto e Poema</h2>
+
+      <p id="paragrafo1" class="texto">
+        Este é o <strong>primeiro parágrafo</strong> da nossa secção.<br>
+        Aqui temos uma quebra de linha para separar ideias.<br>
+        HTML permite estruturar o conteúdo de forma clara.
+      </p>
+
+      <p id="paragrafo2" class="texto">
+        Este é o <em>segundo parágrafo</em>.
+        Podemos usar diferentes elementos semânticos para dar <mark>significado</mark> ao texto.
+      </p>
+
+      <h3>Exemplo de código</h3>
+      <pre id="bloco-codigo" class="codigo">
+for (let i = 0; i < 5; i++) {
+    console.log("Olá Mundo!");
+}
+            </pre>
+
+      <h3>Poema Livre</h3>
+      <p id="texto-poema" class="poema">
+        O vento sopra,<br>
+        as palavras dançam no ar.<br>
+        Entre linhas e códigos,<br>
+        nasce a liberdade de criar.
+      </p>
+    </section>
+
+    <!-- Artigo -->
+    <article id="artigo" class="artigo">
+      <h2>Um Artigo de Exemplo</h2>
+      <p>
+        Este artigo foi criado apenas para demonstrar a estrutura semântica moderna do HTML5.
+      </p>
+    </article>
+
+    <!-- Aside -->
+    <aside id="barra-lateral" class="sidebar">
+      <h3>Notas Laterais</h3>
+      <p>Aqui pode estar informação complementar, links úteis ou referências.</p>
+    </aside>
+
+    <!-- Frase -->
+    <section id="frase" class="frase-semantica">
+      <p>
+        <strong>HTML</strong> é a base da web,
+        <em>CSS</em> adiciona estilo,
+        e <code>JavaScript</code> traz vida.
+        <span class="destaque">Tudo em harmonia!</span>
+      </p>
+    </section>
+  </main>
+
+  <footer id="rodape" class="footer">
+    <p>&copy; 2025 - Página de Exemplo criada em HTML.</p>
+  </footer>
+</body>
+
+</html>
