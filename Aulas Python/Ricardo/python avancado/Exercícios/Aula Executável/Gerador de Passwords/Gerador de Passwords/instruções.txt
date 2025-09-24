@@ -1,0 +1,24 @@
+1. Criar ambiente virtual para as bibliotecas necessárias.  
+   - python -m venv venv  
+   - Ativar o ambiente:  
+     - Windows: venv\Scripts\activate  
+     - Linux/Mac: source venv/bin/activate  
+
+2. (Opcional) Criar um arquivo requirements.txt para gerenciar as dependências.  
+   - pip freeze > requirements.txt  
+   - (Se faltar o pyinstaler) pip install pyinstaller
+   - Instalar dependências: pip install -r requirements.txt  
+
+3. (Opcional) Definir um ícone para o executável (.ico).  
+   - Exemplo: salvar em "icon/NomeDoIcon.ico"  
+
+4. Gerar o executável com PyInstaller:  
+   python -m PyInstaller --onefile --windowed --clean --icon "icon/icon.ico" --name "NomeDoExe" app.py  
+
+   - --onefile: gera apenas um .exe  
+   - --windowed: não abre janela de consola (apenas para GUI)  
+   - --clean: não inclui cache (ex.: __pycache__)  
+   - --icon: define o ícone do executável  
+   - --name: define o nome do arquivo final (.exe)  
+
+5. app.py é o ponto de entrada do programa.  
