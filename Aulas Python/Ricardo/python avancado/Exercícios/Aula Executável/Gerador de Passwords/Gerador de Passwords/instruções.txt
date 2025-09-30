@@ -1,3 +1,5 @@
+--------------------------------- Terminal ---------------------------------
+
 1. Criar ambiente virtual para as bibliotecas necessárias.  
    - python -m venv venv  
    - Ativar o ambiente:  
@@ -22,3 +24,16 @@
    - --name: define o nome do arquivo final (.exe)  
 
 5. app.py é o ponto de entrada do programa.  
+
+--------------------------------- Code ---------------------------------
+
+6. Criar e escrever.py 
+ # 1 - precisamos de uma variȧvel que representeo ficheiro
+ # 2 - Esta variável necessita de métodos/funções que permitam manipulá-lo
+
+from pathlib import Path
+
+ficheiro = Path("teste.txt")  # Cria o arquivo na pasta atual
+
+with ficheiro.open("w", encoding="utf-8", errors="ignore") as file:
+    file.write("Fans Fans")
