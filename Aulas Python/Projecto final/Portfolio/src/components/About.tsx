@@ -33,15 +33,13 @@ export function About() {
               been coding ever since.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              I'm currently focused on creating practical solutions for
-              businesses, such as an intelligent WhatsApp assistant for small
-              companies in Brazil. My goal is to build tools that help people,
+              I'm currently focused on creating practical solutions for small
+              businesses, such as an intelligent Ai powered WhatsApp assistant. My goal is to build tools that help people,
               generate impact, and strengthen my portfolio while growing
               professionally.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Outside of coding, I enjoy the gym, martial arts, gaming, and
-              anime. I'm always exploring new technologies and ideas to push my
+              Outside of coding, I enjoy the gym, martial arts, gamer culture. I'm always exploring new technologies and ideas to push my
               skills further and turn them into useful, real-world projects.
             </p>
           </AnimateOnScroll>

@@ -67,9 +67,12 @@ export function Contact() {
             }
           }}>
               <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6">
-                  Contact Information
-                </h3>
+                <div className="flex items-center mb-6">
+                  <PhoneIcon size={24} className="text-indigo-600 dark:text-indigo-400 mr-2" />
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+                    Contact Information
+                  </h3>
+                </div>
                 <StaggerContainer className="space-y-6">
                   <StaggerItem>
                     <div className="flex items-start">
@@ -130,9 +133,12 @@ export function Contact() {
             }
           }}>
               <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6">
-                  Send Me a Message
-                </h3>
+                <div className="flex items-center mb-6">
+                  <SendIcon size={24} className="text-indigo-600 dark:text-indigo-400 mr-2" />
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+                    Send Me a Message
+                  </h3>
+                </div>
                 <form onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
