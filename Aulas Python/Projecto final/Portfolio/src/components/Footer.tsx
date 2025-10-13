@@ -6,13 +6,12 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
-                    <h2 className="text-2xl font-bold italic text-gray-800 dark:text-white">
-          João<span className="text-indigo-600 dark:text-indigo-400"> Mendes
-            </span>
-        </h2>
+              <h2 className="text-2xl font-bold italic text-white">
+                João
+                <span className="text-indigo-500 dark:text-indigo-400"> Mendes</span>
+              </h2>
             <p className="text-gray-400 max-w-xs">
-              Creating experiences with modern
-              tech.
+              Creating experiences with modern tech.
             </p>
           </div>
           <div className="flex flex-col items-center md:items-end">
@@ -49,7 +48,7 @@ export function Footer() {
           </p>
           <p className="text-gray-400 text-sm flex items-center mt-4 md:mt-0">
             Made with <SquareTerminal size={14} className="mx-1 text-green-500" />
-          </p>
+        </p>
         </div>
       </div>
     </footer>;
