@@ -77,11 +77,11 @@ export function Hero() {
           duration: 0.8,
           delay: 0.9
         }}>
-            <a href="https://www.linkedin.com/in/jo%C3%A3ofilipemendes/" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">
-              <LinkedinIcon size={24} />
-            </a>
             <a href="https://github.com/Mendes2099" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">
               <GithubIcon size={24} />
+            </a>
+            <a href="https://www.linkedin.com/in/jo%C3%A3ofilipemendes/" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">
+              <LinkedinIcon size={24} />
             </a>
           </motion.div>
         </motion.div>
