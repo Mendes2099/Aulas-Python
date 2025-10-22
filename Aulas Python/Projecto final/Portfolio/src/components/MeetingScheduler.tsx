@@ -1,7 +1,7 @@
 import React from 'react';
 import { CalendarIcon } from 'lucide-react';
 export function MeetingScheduler() {
-  return <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md w-full">
+  return <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md w-full h-full">
       <div className="flex items-center mb-4">
         <CalendarIcon size={24} className="text-indigo-600 dark:text-indigo-400 mr-2" />
         <h3 className="text-xl font-bold text-gray-800 dark:text-white">
