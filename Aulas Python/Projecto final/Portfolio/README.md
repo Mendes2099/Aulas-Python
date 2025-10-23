@@ -65,7 +65,7 @@ These are the essential tools that make the development process smooth and fast,
 
 *   **TypeScript**: This project is written in TypeScript. It's a version of JavaScript that adds "types," allowing us to be more explicit about our data. This helps catch bugs early and makes the code easier to understand and maintain.
 
-*   **React Router DOM**: In a multi-page website, you need a way to handle navigation. This library lets us create different "pages" (like `/about` or `/projects`) and links between them without having to reload the entire site each time.
+*   **React Router DOM**: In a multi-page website, you need a way to handle navigation. Altought I dont use this feature much in my website this library lets you create different "pages" (like `/about` or `/projects`) and links between them without having to reload the entire site each time.
 
 I hope this documentation helps you and others understand your project better. It's a great starting point, and you can add more details about your portfolio's specific features and design choices.
 
