@@ -1,72 +1,91 @@
-# My Portfolio
+# 💼 Portfólio Pessoal – Gestor de Tarefas
 
-Welcome to my portfolio project! This is / will be my website that I've built to showcase my skills and the projects I've worked on too.
+## 📘 Manual do Utilizador
 
-## Getting Started
+### 🧭 1. Introdução
 
-If you want to run this project on your own computer, you'll need [Node.js](https://nodejs.org/) installed. Then, follow these steps.
+Bem-vindo ao meu portfólio!
+Este projeto foi criado para **apresentar as minhas competências em programação** e **demonstrar os projetos** que desenvolvi.
+É uma plataforma interativa e moderna, construída com tecnologias web atuais.
 
-1.  **Clone the repository** (or download the source code):
-    ```sh
-    git clone <your-repository-url>
-    ```
+---
 
-2.  **Navigate to the project directory**:
-    ```sh
-    cd Portfolio
-    ```
+### ⚙️ 2. Requisitos Técnicos
 
-3.  **Install NPM packages**: This command reads the `package.json` file and downloads all the necessary tools and libraries (like the ones described below) into the `node_modules` folder.
-    ```sh
-    npm install
-    ```
+Antes de começar, certifique-se de ter instalado:
 
-4.  **Run the development server**: This will start a local web server so you can see the website in your browser. The site will often automatically reload when you make changes to the code.
-    ```sh
-    npm run dev
-    ```
-    Once it's running, you can open your web browser and go to `http://localhost:(your port number)`.
+* 🟩 **Node.js** – [https://nodejs.org](https://nodejs.org)
+* 🌐 **Navegador moderno** – ex: Chrome, Firefox, Edge
 
-## How This Website is Built
+---
 
-This website uses several modern tools and libraries. I opted by going with React because it allows me to use cool UI tools such as shadCN and Vercel that let me add libraries for styling, animation, and other features.
+### 🛠️ 3. Instalação
 
-### The Foundation: React
+1. **Clone o repositório** ou baixe o código-fonte:
 
-*   **What is it?** - React is a popular JavaScript library for building user interfaces. Its main idea is to break down the UI into small, reusable pieces called **components**.
+   ```bash
+   git clone https://github.com/Mendes2099/Aulas-Python
+   ```
+2. **Entre na pasta do projeto:**
 
-*   **How did I use it?** - This entire website is a collection of React components. For example, there's a `Header` component, a `ProjectCard` component, and a `Footer` component. They themselfs are built by other smaller componests such as `buttons` and if I so wished, I could now use and reuse these components anywhere on my website. This makes the code organized, easy to manage, and efficient. Each component is responsible for handeling just enough for what it need to do. The website you're looking at is therfore just a set of components working together to form the main app!
+   ```bash
+   cd Portfolio
+   ```
+3. **Instale as dependências:**
 
-### The Structure: Components and UI
+   ```bash
+   npm install
+   ```
 
-This project uses a modern approach to building the user interface, relying on a combination of a utility-first CSS framework and a component library philosophy.
+   📦 Isso lê o `package.json` e baixa todas as bibliotecas necessárias para `node_modules`.
 
-*   **Tailwind CSS**: Instead of writing traditional CSS files, this project uses Tailwind. It's a "utility-first" CSS framework, which means we can style elements directly in the code using pre-made classes like `bg-blue-500` (for a blue background) or `text-lg` (for large text). This makes styling faster and more consistent.
+---
 
-*   **shadcn/ui**: This project uses components from the **shadcn/ui** library. What's unique about shadcn/ui is that it's not a typical component library you install. Instead, you copy its designs and accessible components (like buttons, dialogs, and cards) directly into your project. This gives you full control over the code and allows you to easily use and edit fully responsive components and use ones built by the comunity too.
+### 🚀 4. Execução do Programa
 
-### Bringing it to Life: Animations and Effects
+Para iniciar o servidor de desenvolvimento:
 
-A static page can be boring. These libraries add motion and interactivity:
+```bash
+npm run dev
+```
 
-*   **Framer Motion**: This is an animation library for React. It's used to create the smooth transitions, fades, and other dynamic effects you see when you interact with the website.
+Depois, abra o navegador e aceda a:
+👉 [http://localhost:(porta indicada)](http://localhost)
 
-*   **React Intersection Observer**: This is a helper that detects when an element enters the screen. It's often used to trigger animations (with Framer Motion) as you scroll down the page.
+O site **recarrega automaticamente** sempre que o código é alterado.
 
-*   **React Type Animation**: This library creates the "typing" effect for text, which is great for grabbing attention on a landing page.
+---
 
-*   **tsParticles**: This is used to create the cool, animated particle background, adding a touch of visual flair to the site.
+### 💻 5. Comandos Disponíveis
 
-### The "Behind the Scenes" Tools
+| Comando         | Descrição                                  |
+| --------------- | ------------------------------------------ |
+| `npm install`   | Instala todas as dependências do projeto   |
+| `npm run dev`   | Inicia o servidor local de desenvolvimento |
+| `npm run build` | Gera uma versão otimizada para produção    |
 
-These are the essential tools that make the development process smooth and fast, but you don't see them directly in the browser.
+---
 
-*   **npm**: This is the package manager that runs our development tools and manages dependencies. Through npm, we can start a local development server that updates instantly when we change the code. When we’re ready to deploy, npm runs build tools that bundle everything into small, optimized files for the best performance.
+### 🧩 6. Exemplos de Utilização
 
-*   **TypeScript**: This project is written in TypeScript. It's a version of JavaScript that adds "types," allowing us to be more explicit about our data. This helps catch bugs early and makes the code easier to understand and maintain.
+* Após executar `npm run dev`, explore o site:
 
-*   **React Router DOM**: In a multi-page website, you need a way to handle navigation. Altought I dont use this feature much in my website this library lets you create different "pages" (like `/about` or `/projects`) and links between them without having to reload the entire site each time.
+  * 🖱️ Clique em **links** para navegar pelos projetos
+  * 🎞️ Veja **animações** e o **efeito de digitação** na página inicial
+  * ✨ Observe as **partículas dinâmicas** no fundo
 
-I hope this documentation helps you and others understand your project better. It's a great starting point, and you can add more details about your portfolio's specific features and design choices.
+🔧 Para editar:
 
-Happy coding!
+* Modifique qualquer componente dentro de `src/`
+* Veja as mudanças refletidas **instantaneamente** no navegador
+
+---
+
+### 📫 7. Contacto e Créditos
+
+📩 **Contacto:** através do formulário do site ou por email *(não especificado)*
+💡 **Créditos:** Bibliotecas open-source como **React**, **Tailwind**, e **Framer Motion**.
+
+> Espero que esta documentação ajude a compreender melhor o projeto.
+> **Happy coding!** 😄
+
