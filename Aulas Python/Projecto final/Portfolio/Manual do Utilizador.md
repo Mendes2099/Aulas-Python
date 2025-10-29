@@ -84,7 +84,7 @@ O site **recarrega automaticamente** sempre que o código é alterado.
 ### 📫 7. Contacto e Créditos
 
 📩 **Contacto:** através do formulário do site ou por email *(não especificado)*
-💡 **Créditos:** Bibliotecas open-source como **React**, **Tailwind**, e **Framer Motion**.
+💡 **Créditos:** Bibliotecas open-source como **React**, **Tailwind**, e **Framer Motion**. / Todos os formadores e colegas do curso de Python!
 
 > Espero que esta documentação ajude a compreender melhor o projeto.
 > **Happy coding!** 😄
