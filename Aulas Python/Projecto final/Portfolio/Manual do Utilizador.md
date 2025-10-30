@@ -1,12 +1,11 @@
-# 💼 Portfólio Pessoal – Gestor de Tarefas
+# 💼 Portfólio Pessoal (Gestor de Tarefas - Manual do Utilizador)
 
-## 📘 Manual do Utilizador
 
-### 🧭 1. Introdução
+### 📘1. Introdução
 
 Bem-vindo ao meu portfólio!
 Este projeto foi criado para **apresentar as minhas competências em programação** e **demonstrar os projetos** que desenvolvi.
-É uma plataforma interativa e moderna, construída com tecnologias web atuais.
+É uma plataforma interativa e moderna, construída com tecnologias modernas.
 
 ---
 
@@ -21,7 +20,7 @@ Antes de começar, certifique-se de ter instalado:
 
 ### 🛠️ 3. Instalação
 
-1. **Clone o repositório** ou baixe o código-fonte:
+1. **Clone o repositório** ou faça o download do código:
 
    ```bash
    git clone https://github.com/Mendes2099/Aulas-Python
@@ -37,7 +36,7 @@ Antes de começar, certifique-se de ter instalado:
    npm install
    ```
 
-   📦 Isso lê o `package.json` e baixa todas as bibliotecas necessárias para `node_modules`.
+   📦 Isto vai ler o `package.json` e baixa todas as bibliotecas necessárias para a pasta `node_modules`.
 
 ---
 
@@ -49,10 +48,10 @@ Para iniciar o servidor de desenvolvimento:
 npm run dev
 ```
 
-Depois, abra o navegador e aceda a:
-👉 [http://localhost:(porta indicada)](http://localhost)
+Depois, abra o navegador e aceda a :
+👉 [http://localhost:3000](http://localhost) (A porta poderá variar)
 
-O site **recarrega automaticamente** sempre que o código é alterado.
+O site **recarrega automaticamente** sempre que o código fonte é alterado.
 
 ---
 
@@ -72,20 +71,18 @@ O site **recarrega automaticamente** sempre que o código é alterado.
 
   * 🖱️ Clique em **links** para navegar pelos projetos
   * 🎞️ Veja **animações** e o **efeito de digitação** na página inicial
-  * ✨ Observe as **partículas dinâmicas** no fundo
+  * ✨ Observe todas as **funcionalidades**
 
 🔧 Para editar:
 
 * Modifique qualquer componente dentro de `src/`
-* Veja as mudanças refletidas **instantaneamente** no navegador
-
+* Veja as mudanças refletidas **instantaneamente**
 ---
 
 ### 📫 7. Contacto e Créditos
 
-📩 **Contacto:** através do formulário do site ou por email *(não especificado)*
-💡 **Créditos:** Bibliotecas open-source como **React**, **Tailwind**, e **Framer Motion**. / Todos os formadores e colegas do curso de Python!
+* 📩 **Contacto:** do por email: *mendes19966@gmail.com*
+* 💡 **Créditos:** Bibliotecas open-source como **React**, **Tailwind**, e **Framer Motion**. / Todos os formadores e colegas do curso de Python!
 
 > Espero que esta documentação ajude a compreender melhor o projeto.
 > **Happy coding!** 😄
-

@@ -44,8 +44,8 @@ Objetivos:
    ```bash
    npm run dev
    ```
-3. No navegador:
-   🌐 Explore a página inicial e as seções de projetos.
+3. No Browser:
+   🌐 Explore a página!
 
 ---
 
@@ -54,7 +54,7 @@ Objetivos:
 * Integração de **múltiplas bibliotecas React** para criar interfaces dinâmicas
 * Importância da **modularidade e organização** do código
 * Solução de **desafios com animações e UI** utilizando ferramentas de desenvolvimento do navegador
-* Aprimoramento de **habilidades de debugging**
+* Aprimoramento de **habilidades de debugging nas dev tools**
 
 ---
 
